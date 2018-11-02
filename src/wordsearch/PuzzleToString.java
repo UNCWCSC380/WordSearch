@@ -36,10 +36,10 @@ public class PuzzleToString {
 	        }
 	    }
 	    //bottom half of diagonals
-	    for( int i = p.length - 2 ; i >= 0 ; i-- ) {
-	        for( int row = 0 ; row <= i ; row++ ) {
-	            int col =  - row;
-	            string = string + p[p.length - row - 1][p.length - col - 1];
+	    for( int k = p.length - 2 ; k >= 0 ; k-- ) {
+	        for( int j = 0 ; j <= k ; j++ ) {
+	            int i = k - j;
+	            string = string + p[p.length - j - 1][p.length - i - 1];
 	        }
 	    }
 		return string;

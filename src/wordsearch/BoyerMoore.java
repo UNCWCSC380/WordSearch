@@ -14,7 +14,7 @@ public class BoyerMoore
         	return false;
         }
         else {
-            System.out.println("Pattern found at position : "+ pos);
+//            System.out.println("Pattern found at position : "+ pos);
             return true;
         }
         	

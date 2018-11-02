@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 public class WordSearch {
 	
 	//These variables will be used for all algorithms
@@ -80,26 +81,74 @@ public class WordSearch {
 		System.out.println("Bear method took "+ num +" seconds to solve a " + numRows +"x" +numCols + " sized puzzle with " + wordsList.size() + " words " +iterations+" times");
 		
 	}
-
+//===========================================================================================================================================
+	
 	private void boyerMoore() {
+		//STRING PREPROCESSING
+		//change the puzzle to string before beginning and add to direction array
+		ArrayList<String> directionList = new ArrayList<>();
+		
+		PuzzleToString pts = new PuzzleToString();
+		String normal = pts.returnNormal(puzzleArray);
+		directionList.add(normal);
+		
+		String reverse = new StringBuffer(normal).reverse().toString();
+		directionList.add(reverse);
+		
+		String down = pts.returnDown(puzzleArray);
+		directionList.add(down);
+		
+		String up = new StringBuffer(down).reverse().toString();
+		directionList.add(up);
+		
+		String diagUpRight = pts.returnDiagonalUpright(puzzleArray);
+		directionList.add(diagUpRight);
+		
+		String diagDownLeft = new StringBuffer(diagUpRight).reverse().toString();
+		directionList.add(diagDownLeft);
+		
+		String diagUpLeft = pts.returnDiagonalUpLeft(puzzleArray);
+		directionList.add(diagUpLeft);
+		
+		String diagDownRight = new StringBuffer(diagUpLeft).reverse().toString();
+		directionList.add(diagDownRight);
+
+		
+		//begin boyermoore
 		int amount = 0;
 		long timeStart = System.currentTimeMillis();
+
+		int wordsFound = 0;
 		while (amount < iterations) {
 			//Generate Algorithm here
-			//
-			//
-			//
-			//
-			//
+			for (String word:wordsList) {
+				BoyerMoore bm = new BoyerMoore();
+				boolean found = false;
+				for (String direction:directionList) {
+					if(!found) {
+//						System.out.println("Searching for " + word);
+						found = (boolean) bm.findPattern(direction, word);
+					}
+					else {
+//						System.out.println("Breaking from search of " + word);
+						break;
+					}
+					if(found) {
+						wordsFound++;
+					}
+				}
+			}
 			amount++;
 		}
 		long timeEnd = System.currentTimeMillis();
 		long timeElapsed = timeEnd - timeStart;
 		float num = (float) timeElapsed/1000 ;
+		System.out.println("Words found by Boyer Moore= " + wordsFound);
 		System.out.println("Boyer-Moore method took "+ num +" seconds to solve a " + numRows +"x" +numCols + " sized puzzle with " + wordsList.size() + " words " +iterations+" times");
-		
 	}
 
+	//===========================================================================================================================================
+	
 	private void bruteForce() {
 		int amount = 0;
 		long timeStart = System.currentTimeMillis();
