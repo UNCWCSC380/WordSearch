@@ -66,6 +66,125 @@ public class WordSearch {
 	private void bear() {
 		int amount = 0;
 		long timeStart = System.currentTimeMillis();
+		
+		
+		HashMap<int[], String> Amap = new HashMap<int[], String>();
+		HashMap<int[], String> Bmap = new HashMap<int[], String>();
+		HashMap<int[], String> Cmap = new HashMap<int[], String>();
+		HashMap<int[], String> Dmap = new HashMap<int[], String>();
+		HashMap<int[], String> Emap = new HashMap<int[], String>();
+		HashMap<int[], String> Fmap = new HashMap<int[], String>();
+		HashMap<int[], String> Gmap = new HashMap<int[], String>();
+		HashMap<int[], String> Hmap = new HashMap<int[], String>();
+		HashMap<int[], String> Imap = new HashMap<int[], String>();
+		HashMap<int[], String> Jmap = new HashMap<int[], String>();
+		HashMap<int[], String> Kmap = new HashMap<int[], String>();
+		HashMap<int[], String> Lmap = new HashMap<int[], String>();
+		HashMap<int[], String> Mmap = new HashMap<int[], String>();
+		HashMap<int[], String> Nmap = new HashMap<int[], String>();
+		HashMap<int[], String> Omap = new HashMap<int[], String>();
+		HashMap<int[], String> Pmap = new HashMap<int[], String>();
+		HashMap<int[], String> Qmap = new HashMap<int[], String>();
+		HashMap<int[], String> Rmap = new HashMap<int[], String>();
+		HashMap<int[], String> Smap = new HashMap<int[], String>();
+		HashMap<int[], String> Tmap = new HashMap<int[], String>();
+		HashMap<int[], String> Umap = new HashMap<int[], String>();
+		HashMap<int[], String> Vmap = new HashMap<int[], String>();
+		HashMap<int[], String> Wmap = new HashMap<int[], String>();
+		HashMap<int[], String> Xmap = new HashMap<int[], String>();
+		HashMap<int[], String> Ymap = new HashMap<int[], String>();
+		HashMap<int[], String> Zmap = new HashMap<int[], String>();
+		
+		
+		for (int i = 0; i < puzzleArray.length; i++){
+			for (int j = 0; j < puzzleArray.length; j++){
+				
+				
+				switch(puzzleArray[i][j]){
+					
+					case "A":
+						int[] coords1 = {i, j};
+						Amap.put(coords1, "A");	
+					case "B":
+						int[] coords2 = {i, j};
+						Bmap.put(coords2, "B");
+					case "C":
+						int[] coords3 = {i, j};
+						Cmap.put(coords3, "C");
+					case "D":
+						int [] coords4 = {i, j};
+						Dmap.put(coords4, "D");
+					case "E":
+						int [] coords5 = {i, j};
+						Emap.put(coords5, "E");
+					case "F":
+						int [] coords6 = {i, j};
+						Fmap.put(coords6, "F");
+					case "G":
+						int [] coords7 = {i, j};
+						Gmap.put(coords7, "G");
+					case "H":
+						int[] coords8 = {i, j};
+						Hmap.put(coords8, "H");
+					case "I":
+						int[] coords9 = {i, j};
+						Imap.put(coords9, "I");
+					case "J":
+						int[] coords10 = {i, j};
+						Jmap.put(coords10, "J");
+					case "K":
+						int[] coords11 = {i, j};
+						Kmap.put(coords11, "K");
+					case "L":
+						int[] coords12 = {i, j};
+						Lmap.put(coords12, "L");
+					case "M":
+						int[] coords13 = {i, j};
+						Mmap.put(coords13, "M");
+					case "N":
+						int[] coords14 = {i, j};
+						Nmap.put(coords14, "N");
+					case "O":
+						int[] coords15 = {i, j};
+						Omap.put(coords15, "O");
+					case "P":
+						int[] coords16 = {i, j};
+						Pmap.put(coords16, "P");
+					case "Q":
+						int[] coords17 = {i, j};
+						Qmap.put(coords17, "Q");
+					case "R":
+						int[] coords18 = {i, j};
+						Rmap.put(coords18, "R");
+					case "S":
+						int[] coords19 = {i, j};
+						Smap.put(coords19, "S");
+					case "T":
+						int[] coords20 = {i, j};
+						Tmap.put(coords20, "T");
+					case "U":
+						int[] coords21 = {i, j};
+						Umap.put(coords21, "U");
+					case "V":
+						int[] coords22 = {i, j};
+						Vmap.put(coords22, "V");
+					case "W":
+						int[] coords23 = {i, j};
+						Wmap.put(coords23, "W");
+					case "X":
+						int[] coords24 = {i, j};
+						Xmap.put(coords24, "X");
+					case "Y":
+						int[] coords25 = {i, j};
+						Ymap.put(coords25, "Y");
+					case "Z":
+						int[] coords26 = {i, j};
+						Zmap.put(coords26, "Z");
+				}
+			}
+		}
+		
+		
 		while (amount < iterations) {
 			//Generate Algorithm here
 			//
