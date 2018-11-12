@@ -186,12 +186,36 @@ public class WordSearch {
 		
 		
 		while (amount < iterations) {
-			//Generate Algorithm here
-			//
-			//
-			//
-			//
-			//
+			
+			for (String aWord: wordsList){					// For each word we're looking for
+				String firstLet = aWord.substring(0,1);			//First letter of the word...
+				int wordLength = aWord.length();
+				
+				for (HashMap<int[], String> aHash: allHashMaps) {		//For each hash map...	
+					if (aHash.containsValue(firstLet)) {				// If the hash map values contain the first letter of the word we're looking for...
+						
+						for (int[] coords: aHash.keySet()) {		// for each value pair in the hash table...
+							
+							int xCoord = coords[0];
+							int yCoord = coords[1];
+							
+							String checkMe = "";
+							
+							for (int j = 0; j < wordLength; j++) {
+								if (xCoord + j < 50) {
+									checkMe = checkMe + puzzleArray[xCoord + j][yCoord];
+								}
+								
+							}
+							
+							if (checkMe == aWord) {
+								System.out.println("Bear found " + aWord + "at x:" + xCoord + "- y:" + yCoord);
+							}
+						}
+						
+					}
+				}
+			}
 			amount++;
 		}
 		long timeEnd = System.currentTimeMillis();
