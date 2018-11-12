@@ -184,6 +184,35 @@ public class WordSearch {
 			}
 		}
 		
+		ArrayList<HashMap<int[], String>> allHashMaps = new ArrayList<HashMap<int[], String>>();
+		
+		allHashMaps.add(Amap);
+		allHashMaps.add(Bmap);
+		allHashMaps.add(Cmap);
+		allHashMaps.add(Dmap);
+		allHashMaps.add(Emap);
+		allHashMaps.add(Fmap);
+		allHashMaps.add(Gmap);
+		allHashMaps.add(Hmap);
+		allHashMaps.add(Imap);
+		allHashMaps.add(Jmap);
+		allHashMaps.add(Kmap);
+		allHashMaps.add(Lmap);
+		allHashMaps.add(Mmap);
+		allHashMaps.add(Nmap);
+		allHashMaps.add(Omap);
+		allHashMaps.add(Pmap);
+		allHashMaps.add(Qmap);
+		allHashMaps.add(Rmap);
+		allHashMaps.add(Smap);
+		allHashMaps.add(Tmap);
+		allHashMaps.add(Umap);
+		allHashMaps.add(Vmap);
+		allHashMaps.add(Wmap);
+		allHashMaps.add(Xmap);
+		allHashMaps.add(Ymap);
+		allHashMaps.add(Zmap);
+		
 		
 		while (amount < iterations) {
 			
