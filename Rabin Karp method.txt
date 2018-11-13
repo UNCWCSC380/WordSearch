@@ -1,0 +1,61 @@
+private void RabinKarp() {
+		int amount = 0;
+		long timeStart = System.currentTimeMillis();
+		int wordCount = 0;
+		
+		
+		ArrayList<String> directionList = new ArrayList<>();
+		
+		PuzzleToString pts = new PuzzleToString();
+		String normal = pts.returnNormal(puzzleArray);
+		directionList.add(normal);
+		
+		String reverse = new StringBuffer(normal).reverse().toString();
+		directionList.add(reverse);
+		
+		String down = pts.returnDown(puzzleArray);
+		directionList.add(down);
+		
+		String up = new StringBuffer(down).reverse().toString();
+		directionList.add(up);
+		
+		String diagUpRight = pts.returnDiagonalUpright(puzzleArray);
+		directionList.add(diagUpRight);
+		
+		String diagDownLeft = new StringBuffer(diagUpRight).reverse().toString();
+		directionList.add(diagDownLeft);
+		
+		String diagUpLeft = pts.returnDiagonalUpLeft(puzzleArray);
+		directionList.add(diagUpLeft);
+		
+		String diagDownRight = new StringBuffer(diagUpLeft).reverse().toString();
+		directionList.add(diagDownRight);
+		
+		
+		
+		while (amount < iterations) {
+			RabinKarp rk = new RabinKarp();
+			boolean found = false;
+			
+			//Generate Algorithm here
+			for (String word: wordsList) {
+				for (String direction : directionList) {
+					if (!found) {
+						found = rk.findPattern(word, direction);
+						
+					}
+					else {
+//						System.out.println("Word found: " + word);
+						wordCount++;
+						break;
+					}
+				}
+			}
+			amount++;
+		}
+		long timeEnd = System.currentTimeMillis();
+		long timeElapsed = timeEnd - timeStart;
+		float num = (float) timeElapsed/1000 ;
+		System.out.println("Words found = " + wordCount);
+		System.out.println("Rabin-Karp method took "+ num +" seconds to solve a " + numRows +"x" +numCols + " sized puzzle with " + wordsList.size() + " words " +iterations+" times");
+	}
