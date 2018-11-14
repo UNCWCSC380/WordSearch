@@ -24,6 +24,34 @@ public class WordSearch {
 	private String direction;
 	private int foundX;
 	private int foundY;
+	
+		// These variables are for the Bear Method Algorithm
+	private static int numOfAs = 0;
+	private static int numOfBs = 0;
+	private static int numOfCs = 0;
+	private static int numOfDs = 0;
+	private static int numOfEs = 0;
+	private static int numOfFs = 0;
+	private static int numOfGs = 0;
+	private static int numOfHs = 0;
+	private static int numOfIs = 0;
+	private static int numOfJs = 0;
+	private static int numOfKs = 0;
+	private static int numOfLs = 0;
+	private static int numOfMs = 0;
+	private static int numOfNs = 0;
+	private static int numOfOs = 0;
+	private static int numOfPs = 0;
+	private static int numOfQs = 0;
+	private static int numOfRs = 0;
+	private static int numOfSs = 0;
+	private static int numOfTs = 0;
+	private static int numOfUs = 0;
+	private static int numOfVs = 0;
+	private static int numOfWs = 0;
+	private static int numOfXs = 0;
+	private static int numOfYs = 0;
+	private static int numOfZs = 0;
 
 	public static void main(String[] args) {
 		new WordSearch();
@@ -68,32 +96,32 @@ public class WordSearch {
 		long timeStart = System.currentTimeMillis();
 		
 		
-		HashMap<int[], String> Amap = new HashMap<int[], String>();
-		HashMap<int[], String> Bmap = new HashMap<int[], String>();
-		HashMap<int[], String> Cmap = new HashMap<int[], String>();
-		HashMap<int[], String> Dmap = new HashMap<int[], String>();
-		HashMap<int[], String> Emap = new HashMap<int[], String>();
-		HashMap<int[], String> Fmap = new HashMap<int[], String>();
-		HashMap<int[], String> Gmap = new HashMap<int[], String>();
-		HashMap<int[], String> Hmap = new HashMap<int[], String>();
-		HashMap<int[], String> Imap = new HashMap<int[], String>();
-		HashMap<int[], String> Jmap = new HashMap<int[], String>();
-		HashMap<int[], String> Kmap = new HashMap<int[], String>();
-		HashMap<int[], String> Lmap = new HashMap<int[], String>();
-		HashMap<int[], String> Mmap = new HashMap<int[], String>();
-		HashMap<int[], String> Nmap = new HashMap<int[], String>();
-		HashMap<int[], String> Omap = new HashMap<int[], String>();
-		HashMap<int[], String> Pmap = new HashMap<int[], String>();
-		HashMap<int[], String> Qmap = new HashMap<int[], String>();
-		HashMap<int[], String> Rmap = new HashMap<int[], String>();
-		HashMap<int[], String> Smap = new HashMap<int[], String>();
-		HashMap<int[], String> Tmap = new HashMap<int[], String>();
-		HashMap<int[], String> Umap = new HashMap<int[], String>();
-		HashMap<int[], String> Vmap = new HashMap<int[], String>();
-		HashMap<int[], String> Wmap = new HashMap<int[], String>();
-		HashMap<int[], String> Xmap = new HashMap<int[], String>();
-		HashMap<int[], String> Ymap = new HashMap<int[], String>();
-		HashMap<int[], String> Zmap = new HashMap<int[], String>();
+		HashMap<Integer, int[]> Amap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Bmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Cmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Dmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Emap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Fmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Gmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Hmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Imap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Jmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Kmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Lmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Mmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Nmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Omap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Pmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Qmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Rmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Smap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Tmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Umap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Vmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Wmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Xmap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Ymap = new HashMap<Integer, int[]>();
+		HashMap<Integer, int[]> Zmap = new HashMap<Integer, int[]>();
 		
 		
 		for (int i = 0; i < puzzleArray.length; i++){
@@ -103,88 +131,114 @@ public class WordSearch {
 				switch(puzzleArray[i][j]){
 					
 					case "A":
+						numOfAs++;
 						int[] coords1 = {i, j};
-						Amap.put(coords1, "A");	
+						Amap.put(numOfAs, coords1);	
 					case "B":
+						numOfBs++;
 						int[] coords2 = {i, j};
-						Bmap.put(coords2, "B");
+						Bmap.put(numOfBs, coords2);
 					case "C":
+						numOfCs++;
 						int[] coords3 = {i, j};
-						Cmap.put(coords3, "C");
+						Cmap.put(numOfCs, coords3);
 					case "D":
+						numOfDs++;
 						int [] coords4 = {i, j};
-						Dmap.put(coords4, "D");
+						Dmap.put(numOfDs, coords4);
 					case "E":
+						numOfEs++;
 						int [] coords5 = {i, j};
-						Emap.put(coords5, "E");
+						Emap.put(numOfEs, coords5);
 					case "F":
+						numOfFs++;
 						int [] coords6 = {i, j};
-						Fmap.put(coords6, "F");
+						Fmap.put(numOfFs, coords6);
 					case "G":
+						numOfGs++;
 						int [] coords7 = {i, j};
-						Gmap.put(coords7, "G");
+						Gmap.put(numOfGs, coords7);
 					case "H":
+						numOfHs++;
 						int[] coords8 = {i, j};
-						Hmap.put(coords8, "H");
+						Hmap.put(numOfHs, coords8);
 					case "I":
+						numOfIs++;
 						int[] coords9 = {i, j};
-						Imap.put(coords9, "I");
+						Imap.put(numOfIs, coords9);
 					case "J":
+						numOfJs++;
 						int[] coords10 = {i, j};
-						Jmap.put(coords10, "J");
+						Jmap.put(numOfJs, coords10);
 					case "K":
+						numOfKs++;
 						int[] coords11 = {i, j};
-						Kmap.put(coords11, "K");
+						Kmap.put(numOfKs, coords11);
 					case "L":
+						numOfLs++;
 						int[] coords12 = {i, j};
-						Lmap.put(coords12, "L");
+						Lmap.put(numOfLs, coords12);
 					case "M":
+						numOfMs++;
 						int[] coords13 = {i, j};
-						Mmap.put(coords13, "M");
+						Mmap.put(numOfMs, coords13);
 					case "N":
+						numOfNs++;
 						int[] coords14 = {i, j};
-						Nmap.put(coords14, "N");
+						Nmap.put(numOfNs, coords14);
 					case "O":
+						numOfOs++;
 						int[] coords15 = {i, j};
-						Omap.put(coords15, "O");
+						Omap.put(numOfOs, coords15);
 					case "P":
+						numOfPs++;
 						int[] coords16 = {i, j};
-						Pmap.put(coords16, "P");
+						Pmap.put(numOfPs, coords16);
 					case "Q":
+						numOfQs++;
 						int[] coords17 = {i, j};
-						Qmap.put(coords17, "Q");
+						Qmap.put(numOfQs, coords17);
 					case "R":
+						numOfRs++;
 						int[] coords18 = {i, j};
-						Rmap.put(coords18, "R");
+						Rmap.put(numOfRs, coords18);
 					case "S":
+						numOfSs++;
 						int[] coords19 = {i, j};
-						Smap.put(coords19, "S");
+						Smap.put(numOfSs, coords19);
 					case "T":
+						numOfTs++;
 						int[] coords20 = {i, j};
-						Tmap.put(coords20, "T");
+						Tmap.put(numOfTs, coords20);
 					case "U":
+						numOfUs++;
 						int[] coords21 = {i, j};
-						Umap.put(coords21, "U");
+						Umap.put(numOfUs, coords21);
 					case "V":
+						numOfVs++;
 						int[] coords22 = {i, j};
-						Vmap.put(coords22, "V");
+						Vmap.put(numOfVs, coords22);
 					case "W":
+						numOfWs++;
 						int[] coords23 = {i, j};
-						Wmap.put(coords23, "W");
+						Wmap.put(numOfWs, coords23);
 					case "X":
+						numOfXs++;
 						int[] coords24 = {i, j};
-						Xmap.put(coords24, "X");
+						Xmap.put(numOfXs, coords24);
 					case "Y":
+						numOfYs++;
 						int[] coords25 = {i, j};
-						Ymap.put(coords25, "Y");
+						Ymap.put(numOfYs, coords25);
 					case "Z":
+						numOfZs++;
 						int[] coords26 = {i, j};
-						Zmap.put(coords26, "Z");
+						Zmap.put(numOfZs, coords26);
 				}
 			}
 		}
 		
-		ArrayList<HashMap<int[], String>> allHashMaps = new ArrayList<HashMap<int[], String>>();
+		ArrayList<HashMap<Integer, int[]>> allHashMaps = new ArrayList<HashMap<Integer, int[]>>();
 		
 		allHashMaps.add(Amap);
 		allHashMaps.add(Bmap);
@@ -218,40 +272,164 @@ public class WordSearch {
 			
 			for (String aWord: wordsList){					// For each word we're looking for
 				String firstLet = aWord.substring(0,1);			//First letter of the word...
-				int wordLength = aWord.length();
 				
-				for (HashMap<int[], String> aHash: allHashMaps) {		//For each hash map...	
-					if (aHash.containsValue(firstLet)) {				// If the hash map values contain the first letter of the word we're looking for...
-						
-						for (int[] coords: aHash.keySet()) {		// for each value pair in the hash table...
-							
-							int xCoord = coords[0];
-							int yCoord = coords[1];
-							
-							String checkMe = "";
-							
-							for (int j = 0; j < wordLength; j++) {
-								if (xCoord + j < 50) {
-									checkMe = checkMe + puzzleArray[xCoord + j][yCoord];
-								}
-								
+					switch(firstLet){
+					
+						case "A":
+							if (findWord(aWord, Amap)){
+								System.out.println("Found " + aWord);
 							}
 							
-							if (checkMe == aWord) {
-								System.out.println("Bear found " + aWord + "at x:" + xCoord + "- y:" + yCoord);
+						case "B":
+							if (findWord(aWord, Bmap)){
+								System.out.println("Found " + aWord);
 							}
-						}
-						
+							
+						case "C":
+							if (findWord(aWord, Cmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "D":
+							if (findWord(aWord, Dmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "E":
+							if (findWord(aWord, Emap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "F":
+							if (findWord(aWord, Fmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "G":
+							if (findWord(aWord, Gmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "H":
+							if (findWord(aWord, Hmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "I":
+							if (findWord(aWord, Imap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "J":
+							if (findWord(aWord, Jmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "K":
+							if (findWord(aWord, Kmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "L":
+							if (findWord(aWord, Lmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "M":
+							if (findWord(aWord, Mmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "N":
+							if (findWord(aWord, Nmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "O":
+							if (findWord(aWord, Omap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "P":
+							if (findWord(aWord, Pmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "Q":
+							if (findWord(aWord, Qmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "R":
+							if (findWord(aWord, Rmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "S":
+							if (findWord(aWord, Smap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "T":
+							if (findWord(aWord, Tmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "U":
+							if (findWord(aWord, Umap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "V":
+							if (findWord(aWord, Vmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "W":
+							if (findWord(aWord, Wmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "X":
+							if (findWord(aWord, Xmap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "Y":
+							if (findWord(aWord, Ymap)){
+								System.out.println("Found " + aWord);
+							}
+							
+						case "Z":
+							if (findWord(aWord, Zmap)){
+								System.out.println("Found " + aWord);
+							}
 					}
-				}
 			}
 			amount++;
 		}
+		
+		
 		long timeEnd = System.currentTimeMillis();
 		long timeElapsed = timeEnd - timeStart;
 		float num = (float) timeElapsed/1000 ;
 		System.out.println("Bear method took "+ num +" seconds to solve a " + numRows +"x" +numCols + " sized puzzle with " + wordsList.size() + " words " +iterations+" times");
 		
+	}
+	
+	
+	private boolean findWord(String word, HashMap<Integer, int[]> letMap) {
+		int wordLength = word.length();
+		char[] wordArray = word.toCharArray();
+		int hashLength = letMap.size();
+		
+		for (int i = 0; i < hashLength; i++) {
+			
+			
+
+			
+		}
+		return false;
 	}
 //===========================================================================================================================================
 	
