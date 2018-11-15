@@ -25,7 +25,7 @@ public class WordSearch {
 	private int foundX;
 	private int foundY;
 	
-		// These variables are for the Bear Method Algorithm
+	// These variables are for the Bear Method Algorithm
 	private static int numOfAs = 0;
 	private static int numOfBs = 0;
 	private static int numOfCs = 0;
@@ -95,7 +95,7 @@ public class WordSearch {
 		int amount = 0;
 		long timeStart = System.currentTimeMillis();
 		
-		
+
 		HashMap<Integer, int[]> Amap = new HashMap<Integer, int[]>();
 		HashMap<Integer, int[]> Bmap = new HashMap<Integer, int[]>();
 		HashMap<Integer, int[]> Cmap = new HashMap<Integer, int[]>();
@@ -123,117 +123,143 @@ public class WordSearch {
 		HashMap<Integer, int[]> Ymap = new HashMap<Integer, int[]>();
 		HashMap<Integer, int[]> Zmap = new HashMap<Integer, int[]>();
 		
-		
+		String here;
 		for (int i = 0; i < puzzleArray.length; i++){
 			for (int j = 0; j < puzzleArray.length; j++){
 				
-				
-				switch(puzzleArray[i][j]){
+				here = puzzleArray[i][j];
+				switch(here){
 					
 					case "A":
 						numOfAs++;
 						int[] coords1 = {i, j};
 						Amap.put(numOfAs, coords1);	
+						break;
 					case "B":
 						numOfBs++;
 						int[] coords2 = {i, j};
 						Bmap.put(numOfBs, coords2);
+						break;
 					case "C":
 						numOfCs++;
 						int[] coords3 = {i, j};
 						Cmap.put(numOfCs, coords3);
+						break;
 					case "D":
 						numOfDs++;
 						int [] coords4 = {i, j};
 						Dmap.put(numOfDs, coords4);
+						break;
 					case "E":
 						numOfEs++;
 						int [] coords5 = {i, j};
 						Emap.put(numOfEs, coords5);
+						break;
 					case "F":
 						numOfFs++;
 						int [] coords6 = {i, j};
 						Fmap.put(numOfFs, coords6);
+						break;
 					case "G":
 						numOfGs++;
 						int [] coords7 = {i, j};
 						Gmap.put(numOfGs, coords7);
+						break;
 					case "H":
 						numOfHs++;
 						int[] coords8 = {i, j};
 						Hmap.put(numOfHs, coords8);
+						break;
 					case "I":
 						numOfIs++;
 						int[] coords9 = {i, j};
 						Imap.put(numOfIs, coords9);
+						break;
 					case "J":
 						numOfJs++;
 						int[] coords10 = {i, j};
 						Jmap.put(numOfJs, coords10);
+						break;
 					case "K":
 						numOfKs++;
 						int[] coords11 = {i, j};
 						Kmap.put(numOfKs, coords11);
+						break;
 					case "L":
 						numOfLs++;
 						int[] coords12 = {i, j};
 						Lmap.put(numOfLs, coords12);
+						break;
 					case "M":
 						numOfMs++;
 						int[] coords13 = {i, j};
 						Mmap.put(numOfMs, coords13);
+						break;
 					case "N":
 						numOfNs++;
 						int[] coords14 = {i, j};
 						Nmap.put(numOfNs, coords14);
+						break;
 					case "O":
 						numOfOs++;
 						int[] coords15 = {i, j};
 						Omap.put(numOfOs, coords15);
+						break;
 					case "P":
 						numOfPs++;
 						int[] coords16 = {i, j};
 						Pmap.put(numOfPs, coords16);
+						break;
 					case "Q":
 						numOfQs++;
 						int[] coords17 = {i, j};
 						Qmap.put(numOfQs, coords17);
+						break;
 					case "R":
 						numOfRs++;
 						int[] coords18 = {i, j};
 						Rmap.put(numOfRs, coords18);
+						break;
 					case "S":
 						numOfSs++;
 						int[] coords19 = {i, j};
 						Smap.put(numOfSs, coords19);
+						break;
 					case "T":
 						numOfTs++;
 						int[] coords20 = {i, j};
 						Tmap.put(numOfTs, coords20);
+						break;
 					case "U":
 						numOfUs++;
 						int[] coords21 = {i, j};
 						Umap.put(numOfUs, coords21);
+						break;
 					case "V":
 						numOfVs++;
 						int[] coords22 = {i, j};
 						Vmap.put(numOfVs, coords22);
+						break;
 					case "W":
 						numOfWs++;
 						int[] coords23 = {i, j};
 						Wmap.put(numOfWs, coords23);
+						break;
 					case "X":
 						numOfXs++;
 						int[] coords24 = {i, j};
 						Xmap.put(numOfXs, coords24);
+						break;
 					case "Y":
 						numOfYs++;
 						int[] coords25 = {i, j};
 						Ymap.put(numOfYs, coords25);
+						break;
 					case "Z":
 						numOfZs++;
 						int[] coords26 = {i, j};
 						Zmap.put(numOfZs, coords26);
+						break;
 				}
 			}
 		}
@@ -276,134 +302,160 @@ public class WordSearch {
 					switch(firstLet){
 					
 						case "A":
-							if (findWord(aWord, Amap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Amap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "B":
-							if (findWord(aWord, Bmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Bmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "C":
-							if (findWord(aWord, Cmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Cmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "D":
-							if (findWord(aWord, Dmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Dmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "E":
-							if (findWord(aWord, Emap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Emap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "F":
-							if (findWord(aWord, Fmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Fmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "G":
-							if (findWord(aWord, Gmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Gmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "H":
-							if (findWord(aWord, Hmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Hmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "I":
-							if (findWord(aWord, Imap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Imap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "J":
-							if (findWord(aWord, Jmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Jmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "K":
-							if (findWord(aWord, Kmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Kmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "L":
-							if (findWord(aWord, Lmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Lmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "M":
-							if (findWord(aWord, Mmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Mmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "N":
-							if (findWord(aWord, Nmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Nmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "O":
-							if (findWord(aWord, Omap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Omap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "P":
-							if (findWord(aWord, Pmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Pmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "Q":
-							if (findWord(aWord, Qmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Qmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "R":
-							if (findWord(aWord, Rmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Rmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "S":
-							if (findWord(aWord, Smap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Smap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "T":
-							if (findWord(aWord, Tmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Tmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "U":
-							if (findWord(aWord, Umap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Umap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "V":
-							if (findWord(aWord, Vmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Vmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "W":
-							if (findWord(aWord, Wmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Wmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "X":
-							if (findWord(aWord, Xmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Xmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "Y":
-							if (findWord(aWord, Ymap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Ymap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 							
 						case "Z":
-							if (findWord(aWord, Zmap)){
-								System.out.println("Found " + aWord);
+							if (findWord(aWord, Zmap) == true){
+								//System.out.println("Found: " + aWord);
 							}
+							break;
 					}
 			}
 			amount++;
@@ -417,17 +469,228 @@ public class WordSearch {
 		
 	}
 	
-	
 	private boolean findWord(String word, HashMap<Integer, int[]> letMap) {
+		boolean didFind = false;
+		
 		int wordLength = word.length();
-		char[] wordArray = word.toCharArray();
 		int hashLength = letMap.size();
 		
-		for (int i = 0; i < hashLength; i++) {
+		for (int i = 1; i <= hashLength; i++) {
 			
+			int x;
+			int y;
+			String temp;
+			int[] holder;
 			
-
-			
+			for (int j = 1; j <= 8; j++){
+				
+				switch(j){
+				
+				case 1:
+					// Look Right
+					holder = letMap.get(i);
+					x = holder[0];
+					y = holder[1];
+					
+					temp = puzzleArray[x][y];
+					
+					for (int k = 1; k < wordLength; k++){
+						if (x + k > 49){
+							x = k * -1;
+						}
+						temp = temp + puzzleArray[x + k][y];
+						String wrdTemp = word.substring(0, k+1);
+						if (temp.equals(wrdTemp) == false){
+							break;
+						}
+					}
+					if (temp.equals(word)){
+						didFind = true;
+						return didFind;
+					}
+					break;
+					
+				case 2:
+					// Look Left
+					holder = letMap.get(i);
+					x = holder[0];
+					y = holder[1];
+					
+					temp = puzzleArray[x][y];
+					
+					for (int k = 1; k < wordLength; k++){
+						if (x - k < 0){
+							x = 49 + k;
+						}
+						temp = temp + puzzleArray[x - k][y];
+						String wrdTemp = word.substring(0, k+1);
+						if (temp.equals(wrdTemp) == false){
+							break;
+						}
+					}
+					if (temp.equals(word)){
+						didFind = true;
+						return didFind;
+					}
+					break;
+					
+				case 3:
+					// Look Up
+					holder = letMap.get(i);
+					x = holder[0];
+					y = holder[1];
+					
+					temp = puzzleArray[x][y];
+					
+					for (int k = 1; k < wordLength; k++){
+						if (y - k < 0){
+							y = 49 + k;
+						}
+						temp = temp + puzzleArray[x][y - k];
+						String wrdTemp = word.substring(0, k+1);
+						if (temp.equals(wrdTemp) == false){
+							break;
+						}
+					}
+					if (temp.equals(word)){
+						didFind = true;
+						return didFind;
+					}
+					break;
+					
+				case 4:
+					// Look Down
+					holder = letMap.get(i);
+					x = holder[0];
+					y = holder[1];
+					
+					temp = puzzleArray[x][y];
+					
+					for (int k = 1; k < wordLength; k++){
+						if (y + k > 49){
+							y = k * -1;
+						}
+						temp = temp + puzzleArray[x][y + k];
+						String wrdTemp = word.substring(0, k+1);
+						if (temp.equals(wrdTemp) == false){
+							break;
+						}
+					}
+					if (temp.equals(word)){
+						didFind = true;
+						return didFind;
+					}
+					break;
+					
+				case 5:
+					// Look Right-Up
+					holder = letMap.get(i);
+					x = holder[0];
+					y = holder[1];
+					
+					temp = puzzleArray[x][y];
+					
+					for (int k = 1; k < wordLength; k++){
+						if (x + k > 49){
+							x = k * -1;
+						}
+						if (y - k < 0){
+							y = 49 + k;
+						}
+						temp = temp + puzzleArray[x + k][y - k];
+						String wrdTemp = word.substring(0, k+1);
+						if (temp.equals(wrdTemp) == false){
+							break;
+						}
+					}
+					if (temp.equals(word)){
+						didFind = true;
+						return didFind;
+					}
+					break;
+					
+				case 6:
+					// Look Right-Down
+					holder = letMap.get(i);
+					x = holder[0];
+					y = holder[1];
+					
+					temp = puzzleArray[x][y];
+					
+					for (int k = 1; k < wordLength; k++){
+						if (x + k > 49){
+							x = k * -1;
+						}
+						if (y + k > 49){
+							y = k * -1;
+						}
+						temp = temp + puzzleArray[x + k][y + k];
+						String wrdTemp = word.substring(0, k+1);
+						if (temp.equals(wrdTemp) == false){
+							break;
+						}
+					}
+					if (temp.equals(word)){
+						didFind = true;
+						return didFind;
+					}
+					break;
+					
+				case 7:
+					// Look Left-Up
+					holder = letMap.get(i);
+					x = holder[0];
+					y = holder[1];
+					
+					temp = puzzleArray[x][y];
+					
+					for (int k = 1; k < wordLength; k++){
+						if (x - k < 0){
+							x = 49 + k;
+						}
+						if (y - k < 0){
+							y = 49 + k;
+						}
+						temp = temp + puzzleArray[x - k][y - k];
+						String wrdTemp = word.substring(0, k+1);
+						if (temp.equals(wrdTemp) == false){
+							break;
+						}
+					}
+					if (temp.equals(word)){
+						didFind = true;
+						return didFind;
+					}
+					break;
+					
+				case 8:
+					// Look Left-Down
+					holder = letMap.get(i);
+					x = holder[0];
+					y = holder[1];
+					
+					temp = puzzleArray[x][y];
+					
+					for (int k = 1; k < wordLength; k++){
+						if (x - k < 0){
+							x = 49 + k;
+						}
+						if (y + k > 49){
+							y = k * -1;
+						}
+						temp = temp + puzzleArray[x - k][y + k];
+						String wrdTemp = word.substring(0, k+1);
+						if (temp.equals(wrdTemp) == false){
+							break;
+						}
+					}
+					if (temp.equals(word)){
+						didFind = true;
+						return didFind;
+					}
+					break;	
+				}	
+			}
 		}
 		return false;
 	}
