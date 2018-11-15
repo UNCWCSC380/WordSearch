@@ -3,6 +3,7 @@ package wordsearch;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 
@@ -15,7 +16,7 @@ public class WordSearch {
 	private int numRows;
 	
 	
-	private int iterations = 1;//this variable changes how many time the current puzzle is solved
+	private int iterations = 5000;//this variable changes how many time the current puzzle is solved
 	
 	//These variables are used for the brute force algorithm
 	private int x = 0;
@@ -75,18 +76,62 @@ public class WordSearch {
 	private void RabinKarp() {
 		int amount = 0;
 		long timeStart = System.currentTimeMillis();
+		int wordCount = 0;
+		
 		while (amount < iterations) {
+		ArrayList<String> directionList = new ArrayList<>();
+		
+		PuzzleToString pts = new PuzzleToString();
+		String normal = pts.returnNormal(puzzleArray);
+		directionList.add(normal);
+		
+		String reverse = new StringBuffer(normal).reverse().toString();
+		directionList.add(reverse);
+		
+		String down = pts.returnDown(puzzleArray);
+		directionList.add(down);
+		
+		String up = new StringBuffer(down).reverse().toString();
+		directionList.add(up);
+		
+		String diagUpRight = pts.returnDiagonalUpright(puzzleArray);
+		directionList.add(diagUpRight);
+		
+		String diagDownLeft = new StringBuffer(diagUpRight).reverse().toString();
+		directionList.add(diagDownLeft);
+		
+		String diagUpLeft = pts.returnDiagonalUpLeft(puzzleArray);
+		directionList.add(diagUpLeft);
+		
+		String diagDownRight = new StringBuffer(diagUpLeft).reverse().toString();
+		directionList.add(diagDownRight);
+		
+		
+		
+		
+			RabinKarp rk = new RabinKarp();
+			boolean found = false;
+			
 			//Generate Algorithm here
-			//
-			//
-			//
-			//
-			//
+			for (String word: wordsList) {
+				for (String direction : directionList) {
+					if (!found) {
+						found = rk.findPattern(word, direction);
+						
+					}
+					else {
+//						System.out.println("Word found: " + word);
+						wordCount++;
+						break;
+					}
+				}
+			}
 			amount++;
 		}
 		long timeEnd = System.currentTimeMillis();
 		long timeElapsed = timeEnd - timeStart;
 		float num = (float) timeElapsed/1000 ;
+		//System.out.println("Words found = " + wordCount);
 		System.out.println("Rabin-Karp method took "+ num +" seconds to solve a " + numRows +"x" +numCols + " sized puzzle with " + wordsList.size() + " words " +iterations+" times");
 	}
 		
@@ -697,8 +742,14 @@ public class WordSearch {
 //===========================================================================================================================================
 	
 	private void boyerMoore() {
+		
+		int amount = 0;
+		long timeStart = System.currentTimeMillis();
 		//STRING PREPROCESSING
 		//change the puzzle to string before beginning and add to direction array
+		
+		int wordsFound = 0;
+		while (amount < iterations) {
 		ArrayList<String> directionList = new ArrayList<>();
 		
 		PuzzleToString pts = new PuzzleToString();
@@ -728,11 +779,9 @@ public class WordSearch {
 
 		
 		//begin boyermoore
-		int amount = 0;
-		long timeStart = System.currentTimeMillis();
+		
 
-		int wordsFound = 0;
-		while (amount < iterations) {
+
 			//Generate Algorithm here
 			for (String word:wordsList) {
 				BoyerMoore bm = new BoyerMoore();
@@ -756,7 +805,7 @@ public class WordSearch {
 		long timeEnd = System.currentTimeMillis();
 		long timeElapsed = timeEnd - timeStart;
 		float num = (float) timeElapsed/1000 ;
-		System.out.println("Words found by Boyer Moore= " + wordsFound);
+		//System.out.println("Words found by Boyer Moore= " + wordsFound);
 		System.out.println("Boyer-Moore method took "+ num +" seconds to solve a " + numRows +"x" +numCols + " sized puzzle with " + wordsList.size() + " words " +iterations+" times");
 	}
 
@@ -770,9 +819,9 @@ public class WordSearch {
 				boolean print = true;
 				if (wordFound(word) & print) {
 					//prints location of each word in console					
-					System.out.println("The word "+word+" was found at Row:"+ foundY+ " Col:"
-					 + foundX
-					 +" going " +direction);
+//					System.out.println("The word "+word+" was found at Row:"+ foundY+ " Col:"
+//					 + foundX
+//					 +" going " +direction);
 				}
 			}
 			amount++;
