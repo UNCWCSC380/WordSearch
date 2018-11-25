@@ -15,16 +15,19 @@ public class WordSearch {
 	private int numCols;
 	private int numRows;
 	
-	
-	private int iterations = 5000;//this variable changes how many time the current puzzle is solved
+	//this variable changes how many time the current puzzle is solved
+	private int iterations = 1000;
 	
 	//These variables are used for the brute force algorithm
 	private int x = 0;
 	private int y= 0;
 	private String[] directions = new String[] {"up", "down", "left", "right","up-right","down-right","left-up","left-down" }; 
+	
+	@SuppressWarnings("unused")
 	private String direction;
-	private int foundX;
-	private int foundY;
+	@SuppressWarnings("unused")
+	private int foundX, foundY;
+
 	
 	// These variables are for the Bear Method Algorithm
 	private static int numOfAs = 0;
@@ -63,22 +66,24 @@ public class WordSearch {
 		wordsList = readWords("Resources/Words");
 		getDemensions("Resources/Puzzle");
 		createPuzzleMatrix("Resources/Puzzle");
-		printPuzzle();
-		//
+		//printPuzzle();
 		
-		bruteForce();
-		boyerMoore();
+		
+		//bruteForce();
+		//boyerMoore();
 		bear();
-		RabinKarp();
+		//Rabin();
 		
 		}
 
-	private void RabinKarp() {
+	private void Rabin() {
 		int amount = 0;
 		long timeStart = System.currentTimeMillis();
+		
+		@SuppressWarnings("unused")
 		int wordCount = 0;
 		
-		while (amount < iterations) {
+		
 		ArrayList<String> directionList = new ArrayList<>();
 		
 		PuzzleToString pts = new PuzzleToString();
@@ -106,10 +111,10 @@ public class WordSearch {
 		String diagDownRight = new StringBuffer(diagUpLeft).reverse().toString();
 		directionList.add(diagDownRight);
 		
+		while (amount < iterations) {
 		
 		
-		
-			RabinKarp rk = new RabinKarp();
+			RabinKarpp rk = new RabinKarpp();
 			boolean found = false;
 			
 			//Generate Algorithm here
@@ -131,8 +136,8 @@ public class WordSearch {
 		long timeEnd = System.currentTimeMillis();
 		long timeElapsed = timeEnd - timeStart;
 		float num = (float) timeElapsed/1000 ;
-		//System.out.println("Words found = " + wordCount);
-		System.out.println("Rabin-Karp method took "+ num +" seconds to solve a " + numRows +"x" +numCols + " sized puzzle with " + wordsList.size() + " words " +iterations+" times");
+		System.out.println(num);
+		//System.out.println("Rabin-Karp method took "+ num +" seconds to solve a " + numRows +"x" +numCols + " sized puzzle with " + wordsList.size() + " words " +iterations+" times");
 	}
 		
 
@@ -511,7 +516,7 @@ public class WordSearch {
 		long timeElapsed = timeEnd - timeStart;
 		float num = (float) timeElapsed/1000 ;
 		System.out.println("Bear method took "+ num +" seconds to solve a " + numRows +"x" +numCols + " sized puzzle with " + wordsList.size() + " words " +iterations+" times");
-		
+		//System.out.println(num);
 	}
 	
 	private boolean findWord(String word, HashMap<Integer, int[]> letMap) {
@@ -540,7 +545,7 @@ public class WordSearch {
 					temp = puzzleArray[x][y];
 					
 					for (int k = 1; k < wordLength; k++){
-						if (x + k > 49){
+						if (x + k > (numCols -1)){
 							x = k * -1;
 						}
 						temp = temp + puzzleArray[x + k][y];
@@ -565,7 +570,7 @@ public class WordSearch {
 					
 					for (int k = 1; k < wordLength; k++){
 						if (x - k < 0){
-							x = 49 + k;
+							x = (numCols -1) + k;
 						}
 						temp = temp + puzzleArray[x - k][y];
 						String wrdTemp = word.substring(0, k+1);
@@ -589,7 +594,7 @@ public class WordSearch {
 					
 					for (int k = 1; k < wordLength; k++){
 						if (y - k < 0){
-							y = 49 + k;
+							y = (numCols -1) + k;
 						}
 						temp = temp + puzzleArray[x][y - k];
 						String wrdTemp = word.substring(0, k+1);
@@ -612,7 +617,7 @@ public class WordSearch {
 					temp = puzzleArray[x][y];
 					
 					for (int k = 1; k < wordLength; k++){
-						if (y + k > 49){
+						if (y + k > (numCols -1)){
 							y = k * -1;
 						}
 						temp = temp + puzzleArray[x][y + k];
@@ -636,11 +641,11 @@ public class WordSearch {
 					temp = puzzleArray[x][y];
 					
 					for (int k = 1; k < wordLength; k++){
-						if (x + k > 49){
+						if (x + k > (numCols -1)){
 							x = k * -1;
 						}
 						if (y - k < 0){
-							y = 49 + k;
+							y = (numCols -1) + k;
 						}
 						temp = temp + puzzleArray[x + k][y - k];
 						String wrdTemp = word.substring(0, k+1);
@@ -663,10 +668,10 @@ public class WordSearch {
 					temp = puzzleArray[x][y];
 					
 					for (int k = 1; k < wordLength; k++){
-						if (x + k > 49){
+						if (x + k > (numCols -1)){
 							x = k * -1;
 						}
-						if (y + k > 49){
+						if (y + k > (numCols -1)){
 							y = k * -1;
 						}
 						temp = temp + puzzleArray[x + k][y + k];
@@ -691,10 +696,10 @@ public class WordSearch {
 					
 					for (int k = 1; k < wordLength; k++){
 						if (x - k < 0){
-							x = 49 + k;
+							x = (numCols -1) + k;
 						}
 						if (y - k < 0){
-							y = 49 + k;
+							y = (numCols -1) + k;
 						}
 						temp = temp + puzzleArray[x - k][y - k];
 						String wrdTemp = word.substring(0, k+1);
@@ -718,9 +723,9 @@ public class WordSearch {
 					
 					for (int k = 1; k < wordLength; k++){
 						if (x - k < 0){
-							x = 49 + k;
+							x = (numCols -1) + k;
 						}
-						if (y + k > 49){
+						if (y + k > (numCols -1)){
 							y = k * -1;
 						}
 						temp = temp + puzzleArray[x - k][y + k];
@@ -748,8 +753,10 @@ public class WordSearch {
 		//STRING PREPROCESSING
 		//change the puzzle to string before beginning and add to direction array
 		
+		
+		@SuppressWarnings("unused")
 		int wordsFound = 0;
-		while (amount < iterations) {
+		
 		ArrayList<String> directionList = new ArrayList<>();
 		
 		PuzzleToString pts = new PuzzleToString();
@@ -781,7 +788,7 @@ public class WordSearch {
 		//begin boyermoore
 		
 
-
+		while (amount < iterations) {
 			//Generate Algorithm here
 			for (String word:wordsList) {
 				BoyerMoore bm = new BoyerMoore();
@@ -806,7 +813,8 @@ public class WordSearch {
 		long timeElapsed = timeEnd - timeStart;
 		float num = (float) timeElapsed/1000 ;
 		//System.out.println("Words found by Boyer Moore= " + wordsFound);
-		System.out.println("Boyer-Moore method took "+ num +" seconds to solve a " + numRows +"x" +numCols + " sized puzzle with " + wordsList.size() + " words " +iterations+" times");
+		//System.out.println("Boyer-Moore method took "+ num +" seconds to solve a " + numRows +"x" +numCols + " sized puzzle with " + wordsList.size() + " words " +iterations+" times");
+		System.out.println(num);
 	}
 
 	//===========================================================================================================================================
@@ -829,7 +837,8 @@ public class WordSearch {
 		long timeEnd = System.currentTimeMillis();
 		long timeElapsed = timeEnd - timeStart;
 		float num = (float) timeElapsed/1000 ;
-		System.out.println("Brute Force method took "+ num +" seconds to solve a " + numRows +"x" +numCols + " sized puzzle with " + wordsList.size() + " words " +iterations+" times");
+		//System.out.println("Brute Force method took "+ num +" seconds to solve a " + numRows +"x" +numCols + " sized puzzle with " + wordsList.size() + " words " +iterations+" times");
+		System.out.println(num);
 	}
 
 	private boolean wordFound(String word) {
