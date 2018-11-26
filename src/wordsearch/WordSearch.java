@@ -30,32 +30,8 @@ public class WordSearch {
 
 	
 	// These variables are for the Bear Method Algorithm
-	private static int numOfAs = 0;
-	private static int numOfBs = 0;
-	private static int numOfCs = 0;
-	private static int numOfDs = 0;
-	private static int numOfEs = 0;
-	private static int numOfFs = 0;
-	private static int numOfGs = 0;
-	private static int numOfHs = 0;
-	private static int numOfIs = 0;
-	private static int numOfJs = 0;
-	private static int numOfKs = 0;
-	private static int numOfLs = 0;
-	private static int numOfMs = 0;
-	private static int numOfNs = 0;
-	private static int numOfOs = 0;
-	private static int numOfPs = 0;
-	private static int numOfQs = 0;
-	private static int numOfRs = 0;
-	private static int numOfSs = 0;
-	private static int numOfTs = 0;
-	private static int numOfUs = 0;
-	private static int numOfVs = 0;
-	private static int numOfWs = 0;
-	private static int numOfXs = 0;
-	private static int numOfYs = 0;
-	private static int numOfZs = 0;
+	private static int numOfAs, numOfBs, numOfCs, numOfDs, numOfEs, numOfFs, numOfGs, numOfHs, numOfIs, numOfJs, numOfKs, numOfLs, numOfMs,
+	numOfNs, numOfOs, numOfPs, numOfQs, numOfRs, numOfSs, numOfTs, numOfUs, numOfVs, numOfWs, numOfXs, numOfYs, numOfZs= 0;
 
 	public static void main(String[] args) {
 		new WordSearch();
