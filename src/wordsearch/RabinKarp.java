@@ -1,170 +1,148 @@
 package wordsearch;
 
-import java.io.BufferedReader;
-
-import java.io.InputStreamReader;
-
-import java.io.IOException;
-
-import java.util.Random;
-
-import java.math.BigInteger;
-
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class RabinKarp {
-    
-
-    private String pat; 
-
-    /** pattern hash value **/    
-
-    private long patHash;    
-
-    /** pattern length **/
-
-    private int M;  
-
-    /** Large prime **/         
-
-    private long Q; 
-
-    /** radix **/         
-
-    private int R;   
-
-    /** R^(M-1) % Q **/        
-
-    private long RM;          
-
- 
-
-    
-
-    public boolean findPattern(String txt, String pat) 
-
-    {
-
-        this.pat = pat;      
-
-        R = 256;
-
-        M = pat.length();
-
-        Q = longRandomPrime();
-
-        /** precompute R^(M-1) % Q for use in removing leading digit **/
-
-        RM = 1;
-
-        for (int i = 1; i <= M-1; i++)
-
-           RM = (R * RM) % Q;
-
-        patHash = hash(pat, M);
-
-        int pos = search(txt);
-
-        if (pos == -1) {
-
-            
-        	return false;
-        }else {
-
-           
-        	return true;}
-    } 
-
-    /** Compute hash **/
-
-    private long hash(String key, int M)
-
-    { 
-
-        long h = 0; 
-
-        for (int j = 0; j < M; j++) 
-
-            h = (R * h + key.charAt(j)) % Q; 
-
-        return h; 
-
-    } 
-
-    /** Funtion check **/
-
-    private boolean check(String txt, int i) 
-
-    {
-
-        for (int j = 0; j < M; j++) 
-
-            if (pat.charAt(j) != txt.charAt(i + j)) 
-
-                return false; 
-
-        return true;
-
-    }
-
-    /** Funtion to check for exact match**/
-
-    private int search(String txt) 
-
-    {
-
-        int N = txt.length(); 
-
-        if (N < M) return N;
-
-        long txtHash = hash(txt, M); 
-
-        /** check for match at start **/
-
-        if ((patHash == txtHash) && check(txt, 0))
-
-            return 0;
-
-        /** check for hash match. if hash match then check for exact match**/
-
-        for (int i = M; i < N; i++) 
-
-        {
-
-            // Remove leading digit, add trailing digit, check for match. 
-
-            txtHash = (txtHash + Q - RM * txt.charAt(i - M) % Q) % Q; 
-
-            txtHash = (txtHash * R + txt.charAt(i)) % Q; 
-
-            // match
-
-            int offset = i - M + 1;
-
-            if ((patHash == txtHash) && check(txt, offset))
-
-                return offset;
-
+    private static final int BASE = 103;  // Arbitrary base for hash.
+
+    /**
+       Finds first match, returns true, false if no match found.
+    */
+    public boolean findPattern(String pattern, String text) {
+        if (pattern.length() > text.length()) {
+            return false;
+        }
+        int out, phash, thash;
+        out = 1;
+
+        for (int expt = pattern.length(); expt > 1; --expt) {
+            out *= BASE;
+        }
+        
+        // Calculate fingerprint of pattern and of first
+        // pattern.length-length group in text.
+        phash = thash = 0;
+        for (int i = 0; i < pattern.length(); ++i) {
+            phash = phash*BASE + pattern.charAt(i);
+            thash = thash*BASE + text.charAt(i);
+        }
+        
+        for (int s = 0; s < text.length() - pattern.length(); ++s) {
+            if (phash == thash) {
+                if (pattern.equals(text.substring(s, s+pattern.length()))) {
+                    return true;
+                }
+            }
+            assert s < text.length() &&
+                s + pattern.length() < text.length() :
+            "s is " + s + " and s+pattern.length() is " +
+                (s + pattern.length());
+            thash = BASE*(thash - out*text.charAt(s)) +
+                text.charAt(s+pattern.length());
         }
 
-        /** no match **/
-
-        return -1;
-
+        // See note [4].
+        if (phash == thash) {
+            if (pattern.equals(text.substring(text.length() - pattern.length(),
+                                              text.length())))
+                return true;
+        }
+        return false;
     }
 
-    /** generate a random 31 bit prime **/
+    /**
+       Finds all matches of pattern in text, returns a list of
+       matching positions.
+    */
+    public static List<Integer> allMatches(String pattern, String text) {
+        if (pattern.length() > text.length()) {
+            return Collections.EMPTY_LIST;
+        }
+        int out, phash, thash;
+        out = 1;
 
-    private static long longRandomPrime() 
+        for (int expt = pattern.length(); expt > 1; --expt) {
+            out *= BASE;
+        }
+        
+        // Calculate fingerprint of pattern and of first
+        // pattern.length-length group in text.
+        phash = thash = 0;
+        for (int i = 0; i < pattern.length(); ++i) {
+            phash = phash*BASE + pattern.charAt(i);
+            thash = thash*BASE + text.charAt(i);
+        }
 
-    {
+        List<Integer> matches = new ArrayList<>();
+        for (int s = 0; s < text.length() - pattern.length(); ++s) {
+            if (phash == thash) {
+                if (pattern.equals(text.substring(s, s+pattern.length()))) {
+                    matches.add(s);
+                }
+            }
+            assert s < text.length() &&
+                s + pattern.length() < text.length() :
+            "s is " + s + " and s+pattern.length() is " +
+                (s + pattern.length());
+            thash = BASE*(thash - out*text.charAt(s)) +
+                text.charAt(s+pattern.length());
+        }
 
-        BigInteger prime = BigInteger.probablePrime(31, new Random());
-
-        return prime.longValue();
-
+        // See note [4].
+        if (phash == thash) {
+            if (pattern.equals(text.substring(text.length() - pattern.length(),
+                                              text.length())))
+                matches.add(text.length() - pattern.length());
+        }
+        if (matches.size() == 0) {
+            return Collections.EMPTY_LIST;
+        }
+        return matches;
     }
 
-    /** Main Function **/
-
-   
+    /* Not ready for primetime yet.
+    public static Set<PatternPosition> matchSet(Set<String> patterns, String text) {
+        if (pattern.length() > text.length()) {
+            return Collections.EMPTY_SET;
+        }
+        int out, thash;
+        int[] phashes = new int[pattern.size()];
+        out = 1;
+        for (int expt = pattern.length(); expt > 1; --expt) {
+            out *= BASE;
+        }
+        
+        thash = 0;
+        for (int i = 0; i < pattern.length(); ++i) {
+            phash = phash*BASE + pattern.charAt(i);
+            thash = thash*BASE + text.charAt(i);
+        }
+        Set<PatterPosition> matches = new TreeSet<>(); 
+        for (int s = 0; s < text.length() - pattern.length(); ++s) {
+            if (phash == thash) {
+                if (pattern.equals(text.substring(s, s+pattern.length()))) {
+                    matches.add(s);
+                }
+            }
+            assert s < text.length() &&
+                s + pattern.length() < text.length() :
+            "s is " + s + " and s+pattern.length() is " +
+                (s + pattern.length());
+            thash = BASE*(thash - out*text.charAt(s)) +
+                text.charAt(s+pattern.length());
+        }
+        // See note [4].
+        if (phash == thash) {
+            if (pattern.equals(text.substring(text.length() - pattern.length(),
+                                              text.length())))
+                matches.add(text.length() - pattern.length());
+        }
+        if (matches.size() == 0) {
+            return Collections.EMPTY_SET;
+        }
+        return matches;
+        }
+    */
 }
